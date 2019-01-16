@@ -11,18 +11,18 @@ public class Attraction : MonoBehaviour
     // List of visitors in the queue
     private Queue<Visitor> visitorQueue = new Queue<Visitor>();
     // List of visitors inside the attraction
-    private Queue<Visitor> visitorInAttraction = new Queue<Visitor>();
+    protected Queue<Visitor> visitorInAttraction = new Queue<Visitor>();
     // Entry and exit point
     public GameObject entry;
     public GameObject exit;
     // Position of the start of the queue
-    private GameObject queueStart;
+    protected GameObject queueStart;
     // Distance between each visitor in the queue
     public float queueStep = 5f;
     // Check if people are in attraction or not
-    private bool isAttractionAvailable;
+    protected bool isAttractionAvailable;
     // Use it for the attraction duration
-    private Coroutine attractionCoroutine;
+    protected Coroutine attractionCoroutine;
 
     private void Awake()
     {
@@ -87,8 +87,8 @@ public class Attraction : MonoBehaviour
         MoveQueue(false);
         // Join Attraction
         visitorInAttraction.Enqueue(visitor);
-        // Make the visitor invisible
-        visitor.gameObject.SetActive(false);
+        // Make the visitor go inside the attraction
+        GoInside(visitor);
 
         // Start Attraction asap
         if (CanStartAttraction())
@@ -103,6 +103,17 @@ public class Attraction : MonoBehaviour
         }
     }
 
+    protected virtual void GoInside(Visitor visitor)
+    {
+        visitor.gameObject.SetActive(false);
+    }
+
+    protected virtual void GoOutside(Visitor visitor)
+    {
+        visitor.gameObject.SetActive(true);
+        visitor.transform.position = GetExit().position;
+    }
+
     private bool CanStartAttraction()
     {
         if (isAttractionAvailable && (visitorInAttraction.Count == capacity || visitorQueue.Count == 0))
@@ -115,7 +126,7 @@ public class Attraction : MonoBehaviour
         }
     }
 
-    IEnumerator EnjoyAttraction()
+    protected virtual IEnumerator EnjoyAttraction()
     {
         yield return new WaitForSeconds(duration);
 
@@ -124,12 +135,13 @@ public class Attraction : MonoBehaviour
         StartCoroutine(FreeAttraction());
     }
 
-    IEnumerator FreeAttraction()
+    protected IEnumerator FreeAttraction()
     {
         int inAttraction = visitorInAttraction.Count;
         for (int i = 0; i < inAttraction; ++i)
         {
             Visitor visitor = visitorInAttraction.Dequeue();
+            GoOutside(visitor);
             visitor.ExitAttraction();
             // Wait a moment so the visitors don't go out at the same time
             yield return new WaitForSeconds(1);

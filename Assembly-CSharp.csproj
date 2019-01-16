@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{DE5B8E7A-C08A-8164-4E74-61E82D489CF3}</ProjectGuid>
+    <ProjectGuid>{8CC7D255-B3F7-10FF-2B48-C8C8282DE8DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Attraction.cs" />
     <Compile Include="Assets\Scripts\AttractionManager.cs" />
+    <Compile Include="Assets\Scripts\AttractionShop.cs" />
     <Compile Include="Assets\Scripts\Visitor.cs" />
     <Compile Include="Assets\Scripts\VisitorManager.cs" />
     <Compile Include="Assets\Scripts\VisitorVisiting.cs" />
@@ -70,16 +71,16 @@
     <None Include="Assets\Models\Lego-Karting\readme.txt" />
     <None Include="Assets\Models\Print_a_Brick_All_LEGO_parts_and_sets\README.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/Unity Projects/Lego Park/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Unity Projects/Lego Park/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Unity Projects/Lego Park/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Unity Projects/Lego Park/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files/Unity/2018.2.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -315,11 +316,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{ED83623E-BD95-7A43-5B16-1AD1A7F15000}</Project>
+      <Project>{65FB019B-48D1-634C-84C5-0A7A1603838A}</Project>
       <Name>NavMeshComponentsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{9C85337F-2113-9DC7-155C-BC367CE5491D}</Project>
+      <Project>{241F40C4-4C42-9A8F-8FA5-7D12DB012156}</Project>
       <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>

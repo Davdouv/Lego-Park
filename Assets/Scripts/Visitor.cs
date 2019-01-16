@@ -14,19 +14,22 @@ public class Visitor : MonoBehaviour
     bool HasReachedAttraction { get; set; }
 
     protected float distance = 1.0f;
+    protected GameObject myDecoration = null;
 
     public void CreateAgent()
     {
         Vector3 position = transform.position;
+        // Check if the Visitor can be placed on the navmesh before adding a navmeshagent
         NavMeshHit closestHit;
         if (NavMesh.SamplePosition(position, out closestHit, 500, 1))
         {
             transform.position = closestHit.position;
-            gameObject.AddComponent<NavMeshAgent>();
+            //gameObject.AddComponent<NavMeshAgent>();
             agent = gameObject.GetComponent<NavMeshAgent>();
             agent.speed = 20;
             agent.angularSpeed = 180;
             agent.acceleration = 15;
+            agent.radius = 20f;
         }
     }
 
@@ -91,16 +94,35 @@ public class Visitor : MonoBehaviour
     public void ExitAttraction()
     {
         HasReachedAttraction = false;
-        this.gameObject.SetActive(true);
-        this.transform.position = attractionDest.GetExit().position;
+        //this.gameObject.SetActive(true);
+        //this.transform.position = attractionDest.GetExit().position;
         GetDestination();
     }
-
+    
     public void MoveForward(float moveStep)
     {
         // Move goal forward
         goal = new Vector3(goal.x, goal.y, goal.z + moveStep);
         agent.SetDestination(goal);
+    }
+
+        /*
+        // Take the position of the previous visitor
+    public void MoveForward(Vector3 position)
+    {
+        agent.SetDestination(position);
+    }
+    */
+
+    public void AddDecoration(GameObject decoration)
+    {
+        // If he had already a decoration, destroy it to get a new one
+        if (myDecoration)
+        {
+            Destroy(myDecoration);
+        }
+        myDecoration = Instantiate(decoration, transform);
+        myDecoration.transform.SetParent(this.transform);
     }
 
     // Check Dist
