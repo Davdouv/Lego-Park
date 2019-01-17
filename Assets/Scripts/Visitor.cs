@@ -98,21 +98,12 @@ public class Visitor : MonoBehaviour
         //this.transform.position = attractionDest.GetExit().position;
         GetDestination();
     }
-    
-    public void MoveForward(float moveStep)
-    {
-        // Move goal forward
-        goal = new Vector3(goal.x, goal.y, goal.z + moveStep);
-        agent.SetDestination(goal);
-    }
 
-        /*
-        // Take the position of the previous visitor
+    // Take the position of the previous visitor
     public void MoveForward(Vector3 position)
     {
         agent.SetDestination(position);
     }
-    */
 
     public void AddDecoration(GameObject decoration)
     {

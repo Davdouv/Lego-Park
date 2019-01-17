@@ -81,10 +81,10 @@ public class Attraction : MonoBehaviour
     // Called when the queue can get in the attraction or when the attraction ended
     private void JoinAttraction()
     {
-        // LEAVE QUEUE
+        // Visitor is leaving queue
         Visitor visitor = visitorQueue.Dequeue();
         // Move the queue forward
-        MoveQueue(false);
+        MoveQueue(false, visitor);
         // Join Attraction
         visitorInAttraction.Enqueue(visitor);
         // Make the visitor go inside the attraction
@@ -162,16 +162,18 @@ public class Attraction : MonoBehaviour
         return (visitorQueue.Count > 0);
     }
 
-    void MoveQueue(bool backward)
+    void MoveQueue(bool backward, Visitor previousVisitor = null)
     {
         Vector3 translation = new Vector3(0, 0, (backward) ? -queueStep : queueStep);
         queueStart.transform.Translate(translation);
         
         if (!backward)
         {
-            foreach(Visitor visitor in visitorQueue)
+            Vector3 newPosition = previousVisitor.transform.position;
+            foreach (Visitor visitor in visitorQueue)
             {
-                visitor.MoveForward(queueStep);
+                visitor.MoveForward(newPosition);
+                newPosition = visitor.transform.position;
             }
         }
     }

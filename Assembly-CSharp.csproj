@@ -65,11 +65,9 @@
     <Compile Include="Assets\Scripts\AttractionManager.cs" />
     <Compile Include="Assets\Scripts\AttractionShop.cs" />
     <Compile Include="Assets\Scripts\Visitor.cs" />
-    <Compile Include="Assets\Scripts\VisitorManager.cs" />
+    <Compile Include="Assets\Scripts\VisitorFactory.cs" />
     <Compile Include="Assets\Scripts\VisitorVisiting.cs" />
-    <None Include="Assets\Models\Print_a_Brick_All_LEGO_parts_and_sets\LICENSE.txt" />
     <None Include="Assets\Models\Lego-Karting\readme.txt" />
-    <None Include="Assets\Models\Print_a_Brick_All_LEGO_parts_and_sets\README.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -315,6 +313,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{F86B67A9-1002-59CF-3C46-CE6232BEE03B}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
       <Project>{65FB019B-48D1-634C-84C5-0A7A1603838A}</Project>
       <Name>NavMeshComponentsEditor</Name>
