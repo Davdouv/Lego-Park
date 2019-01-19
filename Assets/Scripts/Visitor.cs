@@ -13,6 +13,7 @@ public class Visitor : MonoBehaviour
     protected Vector3 goal;
     // State
     bool HasReachedAttraction { get; set; }
+    bool IsExitingAttraction { get; set; }
 
     protected float distance = 1.0f;
     protected GameObject myDecoration = null;
@@ -51,11 +52,38 @@ public class Visitor : MonoBehaviour
                 // Join the queue and enjoy the attraction
                 JoinQueue();
             }
-            else if (agent.hasPath)
+            else
             {
-                Vector3 toTarget = agent.steeringTarget - this.transform.position;
-                float turnAngle = Vector3.Angle(this.transform.forward, toTarget);
-                agent.acceleration = turnAngle * agent.speed;   // Update deceleration
+                
+            }
+        }
+        else if (IsExitingAttraction)
+        {
+            if (HasReachedGoal())
+            {
+                IsExitingAttraction = false;
+                HasReachedAttraction = false;
+                GetDestination();
+            }
+            else
+            {
+                
+            }
+        }
+        TurnBetter();
+    }
+
+    private void TurnBetter()
+    {
+        if (agent.hasPath && !HasReachedGoal())
+        {
+            float previousAcceleration = agent.acceleration;
+            Vector3 toTarget = agent.steeringTarget - this.transform.position;
+            float turnAngle = Vector3.Angle(this.transform.forward, toTarget);
+            agent.acceleration = turnAngle * agent.speed;   // Update deceleration
+            if (agent.acceleration <= 10)
+            {
+                agent.acceleration = previousAcceleration;
             }
         }
     }
@@ -95,10 +123,8 @@ public class Visitor : MonoBehaviour
 
     public void ExitAttraction()
     {
-        HasReachedAttraction = false;
-        //this.gameObject.SetActive(true);
-        //this.transform.position = attractionDest.GetExit().position;
-        GetDestination();
+        IsExitingAttraction = true;
+        MoveForward(attractionDest.GetExit().position);
     }
 
     // Take the position of the previous visitor

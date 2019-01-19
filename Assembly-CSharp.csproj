@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\AttractionElevator.cs" />
     <Compile Include="Assets\Scripts\AttractionManager.cs" />
     <Compile Include="Assets\Scripts\AttractionShop.cs" />
+    <Compile Include="Assets\Scripts\ForTest\Go.cs" />
     <Compile Include="Assets\Scripts\Visitor.cs" />
     <Compile Include="Assets\Scripts\VisitorFactory.cs" />
     <Compile Include="Assets\Scripts\VisitorVisiting.cs" />

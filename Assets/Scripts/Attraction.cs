@@ -72,17 +72,13 @@ public class Attraction : MonoBehaviour
         }
     }
 
-    private void LeaveQueue()
-    {
-    }
-
     // Called when the queue can get in the attraction or when the attraction ended
     protected void JoinAttraction()
     {
+        Debug.Log("Joining Attraction");
         // Visitor is leaving queue
         Visitor visitor = visitorQueue.Dequeue();
         // Move the queue forward
-        //StartCoroutine(MoveQueueForward(visitor));
         MoveQueueForward(visitor);
         // Join Attraction
         visitorInAttraction.Enqueue(visitor);
@@ -92,11 +88,11 @@ public class Attraction : MonoBehaviour
         // Start Attraction asap
         if (CanStartAttraction())
         {
-            isAttractionAvailable = false;
+            Debug.Log("Can Start Attraction");
             StartCoroutine(EnjoyAttraction());
         }
         // More people can come in the attraction
-        else if (IsQueueFilled() && isAttractionAvailable)
+        else if (IsQueueFilled() && visitorInAttraction.Count < capacity)
         {
             JoinAttraction();
         }
@@ -111,6 +107,7 @@ public class Attraction : MonoBehaviour
     {        
         visitor.transform.position = GetExit().position;
         visitor.gameObject.SetActive(true);
+        visitor.ExitAttraction();
     }
 
     protected virtual bool CanStartAttraction()
@@ -127,9 +124,9 @@ public class Attraction : MonoBehaviour
 
     protected virtual IEnumerator EnjoyAttraction()
     {
+        isAttractionAvailable = false;
         yield return new WaitForSeconds(duration);
-
-        Debug.Log("Attraction is over !");
+        
         // Remove visitor from inside the attraction
         StartCoroutine(FreeAttraction());
     }
@@ -141,15 +138,13 @@ public class Attraction : MonoBehaviour
         {
             Visitor visitor = visitorInAttraction.Dequeue();
             GoOutside(visitor);
-            visitor.ExitAttraction();
             // Wait a moment so the visitors don't go out at the same time
-            yield return new WaitForSeconds(1);
-            Debug.Log("Visitor is free");
+            yield return new WaitForSeconds(0.25f);
         }
         ClearAttraction();
-        Debug.Log("Attraction is Available !");
         isAttractionAvailable = true;
 
+        yield return new WaitForSeconds(1);
         // After the attraction ended, if there are still visitors in the queue, make them join the attraction
         if (IsQueueFilled())
         {
@@ -165,24 +160,25 @@ public class Attraction : MonoBehaviour
     protected virtual void ClearAttraction()
     { }
 
+    // When a visitor is entering the attraction
     void MoveQueueForward(Visitor previousVisitor = null)
     {
-        // Move visitors towards the attraction
-        Vector3 newPosition = previousVisitor.transform.position;
-        foreach (Visitor visitor in visitorQueue)
-        {
-            visitor.MoveForward(newPosition);
-            newPosition = visitor.transform.position;
-        }
-
-        // Wait for the visitor to reach their new position before moving the queue starting point
-        //yield return new WaitForSeconds(queueStep/5);
-
         // Move queue start location
         Vector3 translation = new Vector3(0, 0, queueStep);
         queueStart.transform.Translate(translation);
+
+        // Move each visitor forward
+        Vector3 oldPosition = entry.transform.position;
+        Transform newGoal = entry.transform;
+        foreach (Visitor visitor in visitorQueue)
+        {
+            visitor.MoveForward(newGoal.position);
+            newGoal.Translate(-translation);
+        }
+        entry.transform.position = oldPosition;
     }
 
+    // When a visitor joins the queue
     void MoveQueueBackward()
     {
         // Move queue start location
