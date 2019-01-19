@@ -22,8 +22,8 @@ public class VisitorFactory : MonoBehaviour {
     // Use this for initialization
     void Start () {
         spawnWait = startWait;
-        StartCoroutine(waitSpawner(visitorAttraction, currentVisitorsAttraction, numberOfVisitorsAttraction));
-        StartCoroutine(waitSpawner(visitorVisiting, currentVisitorsVisiting, numberOfVisitorsVisiting));
+        StartCoroutine(WaitSpawner(visitorAttraction, currentVisitorsAttraction, numberOfVisitorsAttraction));
+        StartCoroutine(WaitSpawner(visitorVisiting, currentVisitorsVisiting, numberOfVisitorsVisiting));
     }
 	
 	// Update is called once per frame
@@ -31,7 +31,7 @@ public class VisitorFactory : MonoBehaviour {
         spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
 	}
 
-    IEnumerator waitSpawner(GameObject[] visitors, uint currentVisitors, uint numberOfVisitor)
+    IEnumerator WaitSpawner(GameObject[] visitors, uint currentVisitors, uint numberOfVisitor)
     {
         yield return new WaitForSeconds(startWait);
 

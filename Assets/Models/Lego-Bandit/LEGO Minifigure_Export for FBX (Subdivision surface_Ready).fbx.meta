@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 652389e3ff95dc14e9d6e97430d1c439
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Area Light
+    100002: 'Area Light '
+    100004: Body (SubD Ready poly)
+    100006: Camera
+    100008: Camera&Light
+    100010: Directional Light
+    100012: 'Directional Light '
+    100014: Hand_L (SubD Ready poly)
+    100016: Hand_R (SubD Ready poly)
+    100018: Head (SubD Ready poly)
+    100020: Lego Bandit_Mini Figure (SubD Ready poly)
+    100022: //RootNode
+    100024: Palm_L (SubD Ready poly)
+    100026: Palm_R (SubD Ready poly)
+    100028: Texture Group
+    100030: Waist & Legs (SubD Ready poly)
+    400000: Area Light
+    400002: 'Area Light '
+    400004: Body (SubD Ready poly)
+    400006: Camera
+    400008: Camera&Light
+    400010: Directional Light
+    400012: 'Directional Light '
+    400014: Hand_L (SubD Ready poly)
+    400016: Hand_R (SubD Ready poly)
+    400018: Head (SubD Ready poly)
+    400020: Lego Bandit_Mini Figure (SubD Ready poly)
+    400022: //RootNode
+    400024: Palm_L (SubD Ready poly)
+    400026: Palm_R (SubD Ready poly)
+    400028: Texture Group
+    400030: Waist & Legs (SubD Ready poly)
+    2000000: Camera
+    2100000: Lego Texture
+    2300000: Body (SubD Ready poly)
+    2300002: Hand_L (SubD Ready poly)
+    2300004: Hand_R (SubD Ready poly)
+    2300006: Head (SubD Ready poly)
+    2300008: Palm_L (SubD Ready poly)
+    2300010: Palm_R (SubD Ready poly)
+    2300012: Waist & Legs (SubD Ready poly)
+    3300000: Body (SubD Ready poly)
+    3300002: Hand_L (SubD Ready poly)
+    3300004: Hand_R (SubD Ready poly)
+    3300006: Head (SubD Ready poly)
+    3300008: Palm_L (SubD Ready poly)
+    3300010: Palm_R (SubD Ready poly)
+    3300012: Waist & Legs (SubD Ready poly)
+    4300000: Head (SubD Ready poly)
+    4300002: Body (SubD Ready poly)
+    4300004: Hand_R (SubD Ready poly)
+    4300006: Palm_R (SubD Ready poly)
+    4300008: Hand_L (SubD Ready poly)
+    4300010: Palm_L (SubD Ready poly)
+    4300012: Waist & Legs (SubD Ready poly)
+    10800000: Area Light
+    10800002: 'Area Light '
+    10800004: Directional Light
+    10800006: 'Directional Light '
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

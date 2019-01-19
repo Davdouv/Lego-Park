@@ -6,11 +6,9 @@ using UnityEngine;
 
 public class AttractionManager : MonoBehaviour
 {
+    #region Singleton
     // Instance
     private static AttractionManager m_instance;
-    // Attractions
-    public Attraction[] attractions;
-    private int numberOfAttractions;
 
     public static AttractionManager Instance
     {
@@ -30,6 +28,11 @@ public class AttractionManager : MonoBehaviour
     {
         m_instance = this;
     }
+    #endregion
+
+    // Attractions
+    public Attraction[] attractions;
+    private int numberOfAttractions;
 
     private void Start()
     {

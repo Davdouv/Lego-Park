@@ -9,7 +9,7 @@ public class Attraction : MonoBehaviour
     // Time of the attraction in seconds
     public float duration;
     // List of visitors in the queue
-    private Queue<Visitor> visitorQueue = new Queue<Visitor>();
+    protected Queue<Visitor> visitorQueue = new Queue<Visitor>();
     // List of visitors inside the attraction
     protected Queue<Visitor> visitorInAttraction = new Queue<Visitor>();
     // Entry and exit point
@@ -21,8 +21,6 @@ public class Attraction : MonoBehaviour
     public float queueStep = 5f;
     // Check if people are in attraction or not
     protected bool isAttractionAvailable;
-    // Use it for the attraction duration
-    protected Coroutine attractionCoroutine;
 
     private void Awake()
     {
@@ -54,7 +52,7 @@ public class Attraction : MonoBehaviour
     {
         visitorQueue.Enqueue(visitor);
         // Move the begining of the Queue backward
-        MoveQueue(true);
+        MoveQueueBackward();
         if (CanJoinAttraction())
         {
             JoinAttraction();
@@ -79,12 +77,13 @@ public class Attraction : MonoBehaviour
     }
 
     // Called when the queue can get in the attraction or when the attraction ended
-    private void JoinAttraction()
+    protected void JoinAttraction()
     {
         // Visitor is leaving queue
         Visitor visitor = visitorQueue.Dequeue();
         // Move the queue forward
-        MoveQueue(false, visitor);
+        //StartCoroutine(MoveQueueForward(visitor));
+        MoveQueueForward(visitor);
         // Join Attraction
         visitorInAttraction.Enqueue(visitor);
         // Make the visitor go inside the attraction
@@ -109,14 +108,14 @@ public class Attraction : MonoBehaviour
     }
 
     protected virtual void GoOutside(Visitor visitor)
-    {
-        visitor.gameObject.SetActive(true);
+    {        
         visitor.transform.position = GetExit().position;
+        visitor.gameObject.SetActive(true);
     }
 
-    private bool CanStartAttraction()
+    protected virtual bool CanStartAttraction()
     {
-        if (isAttractionAvailable && (visitorInAttraction.Count == capacity || visitorQueue.Count == 0))
+        if (isAttractionAvailable && (visitorInAttraction.Count == capacity || (visitorQueue.Count == 0 && visitorInAttraction.Count > 0)))
         {
             return true;
         }
@@ -147,6 +146,7 @@ public class Attraction : MonoBehaviour
             yield return new WaitForSeconds(1);
             Debug.Log("Visitor is free");
         }
+        ClearAttraction();
         Debug.Log("Attraction is Available !");
         isAttractionAvailable = true;
 
@@ -162,19 +162,31 @@ public class Attraction : MonoBehaviour
         return (visitorQueue.Count > 0);
     }
 
-    void MoveQueue(bool backward, Visitor previousVisitor = null)
+    protected virtual void ClearAttraction()
+    { }
+
+    void MoveQueueForward(Visitor previousVisitor = null)
     {
-        Vector3 translation = new Vector3(0, 0, (backward) ? -queueStep : queueStep);
-        queueStart.transform.Translate(translation);
-        
-        if (!backward)
+        // Move visitors towards the attraction
+        Vector3 newPosition = previousVisitor.transform.position;
+        foreach (Visitor visitor in visitorQueue)
         {
-            Vector3 newPosition = previousVisitor.transform.position;
-            foreach (Visitor visitor in visitorQueue)
-            {
-                visitor.MoveForward(newPosition);
-                newPosition = visitor.transform.position;
-            }
+            visitor.MoveForward(newPosition);
+            newPosition = visitor.transform.position;
         }
+
+        // Wait for the visitor to reach their new position before moving the queue starting point
+        //yield return new WaitForSeconds(queueStep/5);
+
+        // Move queue start location
+        Vector3 translation = new Vector3(0, 0, queueStep);
+        queueStart.transform.Translate(translation);
+    }
+
+    void MoveQueueBackward()
+    {
+        // Move queue start location
+        Vector3 translation = new Vector3(0, 0, -queueStep);
+        queueStart.transform.Translate(translation);
     }
 }

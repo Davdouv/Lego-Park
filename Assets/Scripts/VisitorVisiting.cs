@@ -9,7 +9,7 @@ public class VisitorVisiting : Visitor {
 
     private void Start()
     {
-        agent.radius = 6; // Need to change depending on the model
+        //agent.radius = 6; // Need to change depending on the model
         distance = 10.0f;
         range = 100;
         GetRandomGoal();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class Visitor : MonoBehaviour
 {
     protected NavMeshAgent agent;
@@ -26,10 +27,6 @@ public class Visitor : MonoBehaviour
             transform.position = closestHit.position;
             //gameObject.AddComponent<NavMeshAgent>();
             agent = gameObject.GetComponent<NavMeshAgent>();
-            agent.speed = 20;
-            agent.angularSpeed = 180;
-            agent.acceleration = 15;
-            agent.radius = 20f;
         }
     }
 
@@ -54,6 +51,12 @@ public class Visitor : MonoBehaviour
                 // Join the queue and enjoy the attraction
                 JoinQueue();
             }
+            else if (agent.hasPath)
+            {
+                Vector3 toTarget = agent.steeringTarget - this.transform.position;
+                float turnAngle = Vector3.Angle(this.transform.forward, toTarget);
+                agent.acceleration = turnAngle * agent.speed;   // Update deceleration
+            }
         }
     }
 
@@ -70,13 +73,12 @@ public class Visitor : MonoBehaviour
         }
     }
 
-    protected bool HasReachedGoal()
+    public bool HasReachedGoal()
     {
         //if (!goal) return false;
         // remainingDistance
         if (Vector3.Distance(goal, this.transform.position) < distance)
         {
-            goal = this.transform.position;
             return true;
         }
         else
@@ -102,7 +104,13 @@ public class Visitor : MonoBehaviour
     // Take the position of the previous visitor
     public void MoveForward(Vector3 position)
     {
+        goal = position;
         agent.SetDestination(position);
+    }
+
+    public Vector3 GetGoal()
+    {
+        return goal;
     }
 
     public void AddDecoration(GameObject decoration)
