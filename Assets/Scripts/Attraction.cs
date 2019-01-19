@@ -78,6 +78,7 @@ public class Attraction : MonoBehaviour
         Debug.Log("Joining Attraction");
         // Visitor is leaving queue
         Visitor visitor = visitorQueue.Dequeue();
+        visitor.IsInQueue = false;
         // Move the queue forward
         MoveQueueForward(visitor);
         // Join Attraction

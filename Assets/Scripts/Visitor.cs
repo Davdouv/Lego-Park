@@ -12,8 +12,9 @@ public class Visitor : MonoBehaviour
     private Attraction attractionDest;
     protected Vector3 goal;
     // State
-    bool HasReachedAttraction { get; set; }
-    bool IsExitingAttraction { get; set; }
+    public bool HasReachedAttraction { get; set; }
+    public bool IsInQueue { get; set; }
+    public bool IsExitingAttraction { get; set; }
 
     protected float distance = 1.0f;
     protected GameObject myDecoration = null;
@@ -52,10 +53,6 @@ public class Visitor : MonoBehaviour
                 // Join the queue and enjoy the attraction
                 JoinQueue();
             }
-            else
-            {
-                
-            }
         }
         else if (IsExitingAttraction)
         {
@@ -65,12 +62,22 @@ public class Visitor : MonoBehaviour
                 HasReachedAttraction = false;
                 GetDestination();
             }
-            else
-            {
-                
-            }
+        }
+        else if (IsInQueue)
+        {
+            FaceAttraction();
         }
         TurnBetter();
+    }
+
+    private void FaceAttraction()
+    {
+        Transform target = attractionDest.GetEntry();
+        if (this.transform.rotation != target.rotation)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, 2*Time.deltaTime);
+        }
     }
 
     private void TurnBetter()
@@ -118,6 +125,7 @@ public class Visitor : MonoBehaviour
     private void JoinQueue()
     {
         HasReachedAttraction = true;
+        IsInQueue = true;
         attractionDest.JoinQueue(this);
     }
 
