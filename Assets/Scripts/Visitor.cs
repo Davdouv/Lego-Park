@@ -17,7 +17,10 @@ public class Visitor : MonoBehaviour
     public bool IsExitingAttraction { get; set; }
 
     protected float distance = 1.0f;
-    protected GameObject myDecoration = null;
+    protected List<GameObject> myDecorations = new List<GameObject>();
+    protected GameObject food;
+
+    public VisitorCharacter character;
 
     public void CreateAgent()
     {
@@ -149,13 +152,24 @@ public class Visitor : MonoBehaviour
 
     public void AddDecoration(GameObject decoration)
     {
-        // If he had already a decoration, destroy it to get a new one
-        if (myDecoration)
+        // If we don't have this type of decoration, add it
+        if (myDecorations.TrueForAll(myDecoration => myDecoration.tag != decoration.tag))
         {
-            Destroy(myDecoration);
+            myDecorations.Add(Instantiate(decoration, transform));
+            myDecorations[myDecorations.Count-1].transform.SetParent(this.transform);
         }
-        myDecoration = Instantiate(decoration, transform);
-        myDecoration.transform.SetParent(this.transform);
+    }
+
+    public void AddFood(GameObject newFood)
+    {
+        if (food)
+        {
+            Destroy(food);
+        }
+        food = Instantiate(newFood, transform);
+        food.transform.SetParent(this.transform);
+        character.GiveFood(food);
+        character.HandleFood();
     }
 
     // Check Dist

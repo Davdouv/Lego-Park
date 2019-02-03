@@ -18,4 +18,9 @@ public class AttractionShop : Attraction {
         // Remove visitor from inside the attraction
         StartCoroutine(FreeAttraction());
     }
+
+    protected virtual void DoSomethingOnVisitor(Visitor visitor)
+    {
+
+    }
 }
