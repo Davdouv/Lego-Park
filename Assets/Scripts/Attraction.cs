@@ -75,7 +75,6 @@ public class Attraction : MonoBehaviour
     // Called when the queue can get in the attraction or when the attraction ended
     protected void JoinAttraction()
     {
-        Debug.Log("Joining Attraction");
         // Visitor is leaving queue
         Visitor visitor = visitorQueue.Dequeue();
         visitor.IsInQueue = false;
@@ -89,11 +88,10 @@ public class Attraction : MonoBehaviour
         // Start Attraction asap
         if (CanStartAttraction())
         {
-            Debug.Log("Can Start Attraction");
             StartCoroutine(EnjoyAttraction());
         }
         // More people can come in the attraction
-        else if (IsQueueFilled() && visitorInAttraction.Count < capacity)
+        else if (IsQueueFilled() && CanJoinAttraction())
         {
             JoinAttraction();
         }

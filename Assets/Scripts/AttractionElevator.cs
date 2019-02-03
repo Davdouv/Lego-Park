@@ -32,7 +32,6 @@ public class AttractionElevator : Attraction {
     {
         if (count < seats.Length)
         {
-            Debug.Log("Going Inside");
             visitor.GetAgent().acceleration = 40; // Set a great deceleration speed so he can turn faster
             visitors.Add(visitor);
             visitor.MoveForward(seats[count].transform.position);
@@ -78,7 +77,6 @@ public class AttractionElevator : Attraction {
     {
         if (visitors.Count > 0 && CanStartAttraction())
         {
-            Debug.Log("Can Start Attraction Elevator");
             StartCoroutine(EnjoyAttraction());
         }
         else if (hasAttractionStarted && !pause)
@@ -103,7 +101,6 @@ public class AttractionElevator : Attraction {
                 visitors.ForEach(visitor => visitor.transform.Translate(moveDown));
                 if (platform.transform.position.y <= minHeight)
                 {
-                    Debug.Log("Attraction is over !");
                     movingUp = false;
                     hasAttractionStarted = false;
                     visitors.ForEach(visitor => visitor.GetAgent().enabled = true);

@@ -14,8 +14,7 @@ public class AttractionShop : Attraction {
             visitor.AddDecoration(decorations[random]);
         }
         yield return new WaitForSeconds(duration);
-
-        Debug.Log("Attraction is over !");
+        
         // Remove visitor from inside the attraction
         StartCoroutine(FreeAttraction());
     }
