@@ -135,10 +135,13 @@ public class Attraction : MonoBehaviour
         int inAttraction = visitorInAttraction.Count;
         for (int i = 0; i < inAttraction; ++i)
         {
-            Visitor visitor = visitorInAttraction.Dequeue();
-            GoOutside(visitor);
-            // Wait a moment so the visitors don't go out at the same time
-            yield return new WaitForSeconds(0.25f);
+            if (visitorInAttraction.Count > 0)
+            {
+                Visitor visitor = visitorInAttraction.Dequeue();
+                GoOutside(visitor);
+                // Wait a moment so the visitors don't go out at the same time
+                yield return new WaitForSeconds(0.25f);
+            }            
         }
         ClearAttraction();
         isAttractionAvailable = true;
