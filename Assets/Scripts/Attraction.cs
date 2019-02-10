@@ -6,6 +6,8 @@ public class Attraction : MonoBehaviour
 {
     // Number of visitors that can go inside the attraction at the same time
     public uint capacity;
+    // Max number of visitor the queue can contains
+    public uint queueCapacity;
     // Time of the attraction in seconds
     public float duration;
     // List of visitors in the queue
@@ -48,14 +50,21 @@ public class Attraction : MonoBehaviour
     }
 
     // Called when a visitor reaches the queue
-    public void JoinQueue(Visitor visitor)
+    public virtual void JoinQueue(Visitor visitor)
     {
-        visitorQueue.Enqueue(visitor);
-        // Move the begining of the Queue backward
-        MoveQueueBackward();
-        if (CanJoinAttraction())
+        if (CanBeJoined())
         {
-            JoinAttraction();
+            visitorQueue.Enqueue(visitor);
+            // Move the begining of the Queue backward
+            MoveQueueBackward();
+            if (CanJoinAttraction())
+            {
+                JoinAttraction();
+            }
+        }
+        else
+        {
+            visitor.GetDestination();
         }
     }
 
@@ -190,6 +199,6 @@ public class Attraction : MonoBehaviour
 
     public virtual bool CanBeJoined()
     {
-        return true;
+        return !(visitorQueue.Count == queueCapacity);
     }
 }

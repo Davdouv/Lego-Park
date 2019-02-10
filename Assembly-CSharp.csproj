@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
+    <Compile Include="Assets\GE Common Assets\Scripts\GE_UIResponder.cs" />
     <Compile Include="Assets\Scripts\Attraction.cs" />
     <Compile Include="Assets\Scripts\AttractionBench.cs" />
     <Compile Include="Assets\Scripts\AttractionEditor.cs" />
@@ -73,7 +75,10 @@
     <Compile Include="Assets\Scripts\VisitorCharacter.cs" />
     <Compile Include="Assets\Scripts\VisitorFactory.cs" />
     <Compile Include="Assets\Scripts\VisitorVisiting.cs" />
+    <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Models\Lego-Karting\readme.txt" />
+    <None Include="Assets\Fantasy Skybox FREE\Fog and Ambient references.txt" />
+    <None Include="Assets\GE Common Assets\Readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

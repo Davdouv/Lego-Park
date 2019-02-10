@@ -62,6 +62,8 @@ public class VisitorCharacter : MonoBehaviour {
         rightArm.transform.localEulerAngles = new Vector3(-54.4f, 0f, -16.09f);
         leftHand.transform.localEulerAngles = new Vector3(-54.4f, 0, 19.8f);
         rightHand.transform.localEulerAngles = new Vector3(-54.4f, 0f, -30.04f);
+
+        _food.transform.SetParent(rightHand.transform);
     }
 
     public void Sit()
