@@ -187,4 +187,9 @@ public class Attraction : MonoBehaviour
         Vector3 translation = new Vector3(0, 0, -queueStep);
         queueStart.transform.Translate(translation);
     }
+
+    public virtual bool CanBeJoined()
+    {
+        return true;
+    }
 }

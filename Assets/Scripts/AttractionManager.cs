@@ -46,6 +46,14 @@ public class AttractionManager : MonoBehaviour
 
     public Attraction GetAttraction()
     {
-        return attractions[Random.Range(0, numberOfAttractions)];
+        Attraction attraction = attractions[Random.Range(0, numberOfAttractions)];
+        if (attraction.CanBeJoined())
+        {
+            return attraction;
+        }
+        else
+        {
+            return GetAttraction();
+        }
     }
 }

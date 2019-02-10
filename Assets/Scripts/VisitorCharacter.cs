@@ -9,6 +9,9 @@ public class VisitorCharacter : MonoBehaviour {
     public GameObject leftHand;
     public GameObject rightHand;
 
+    public GameObject leftLeg;
+    public GameObject rightLeg;
+
     private Vector3 _leftArmRotation;
     private Vector3 _leftArmPosition;
     private Vector3 _rightArmRotation;
@@ -17,6 +20,11 @@ public class VisitorCharacter : MonoBehaviour {
     private Vector3 _leftHandPosition;
     private Vector3 _rightHandRotation;
     private Vector3 _rightHandosition;
+
+    private Vector3 _leftLegRotation;
+    private Vector3 _leftLegPosition;
+    private Vector3 _rightLegRotation;
+    private Vector3 _rightLegPosition;
 
     private bool _isHandlingFood = false;
     private float _consommationTime = 15f;
@@ -30,11 +38,15 @@ public class VisitorCharacter : MonoBehaviour {
         _rightArmRotation = rightArm.transform.localEulerAngles;
         _leftHandRotation = leftHand.transform.localEulerAngles;
         _rightHandRotation = rightHand.transform.localEulerAngles;
+        _leftLegRotation = leftLeg.transform.localEulerAngles;
+        _rightLegRotation = rightLeg.transform.localEulerAngles;
 
         _leftArmPosition = leftArm.transform.localPosition;
         _rightArmPosition = rightArm.transform.localPosition;
         _leftHandPosition = leftHand.transform.localPosition;
         _rightHandosition = rightHand.transform.localPosition;
+        _leftLegPosition = leftLeg.transform.localPosition;
+        _rightLegPosition = rightLeg.transform.localPosition;
     }
 
     public void HandleFood()
@@ -52,17 +64,43 @@ public class VisitorCharacter : MonoBehaviour {
         rightHand.transform.localEulerAngles = new Vector3(-54.4f, 0f, -30.04f);
     }
 
+    public void Sit()
+    {
+        leftLeg.transform.localPosition = new Vector3(0f, 10f, 21f);
+        rightLeg.transform.localPosition = new Vector3(0f, 10f, 21f);
+
+        leftLeg.transform.localEulerAngles = new Vector3(-80f, 0, 0);
+        rightLeg.transform.localEulerAngles = new Vector3(-80f, 0, 0);
+    }
+
+    public void HandsBehind()
+    {
+        leftArm.transform.localPosition = new Vector3(0f, 10.6f, -24f);
+        rightArm.transform.localPosition = new Vector3(0f, 10.6f, -24f);
+        leftHand.transform.localPosition = new Vector3(0f, 10.6f, -24f);
+        rightHand.transform.localPosition = new Vector3(0f, 10.6f, -24f);
+
+        leftArm.transform.localEulerAngles = new Vector3(33.6f, 0f, 0f);
+        rightArm.transform.localEulerAngles = new Vector3(33.6f, 0f, 0f);
+        leftHand.transform.localEulerAngles = new Vector3(33.6f, 0f, 0f);
+        rightHand.transform.localEulerAngles = new Vector3(33.6f, 0f, 0f);
+    }
+
     public void Reset()
     {
         leftArm.transform.localEulerAngles = _leftArmRotation;
         rightArm.transform.localEulerAngles = _rightArmRotation;
         leftHand.transform.localEulerAngles = _leftHandRotation;
         rightHand.transform.localEulerAngles = _rightHandRotation;
+        leftLeg.transform.localEulerAngles = _leftLegRotation;
+        rightLeg.transform.localEulerAngles = _rightLegRotation;
 
         leftArm.transform.localPosition = _leftArmPosition;
         rightArm.transform.localPosition = _rightArmPosition;
         leftHand.transform.localPosition = _leftHandPosition;
         rightHand.transform.localPosition = _rightHandosition;
+        leftLeg.transform.localPosition = _leftLegPosition;
+        rightLeg.transform.localPosition = _rightLegPosition;
     }
 
     public void GiveFood(GameObject newFood)

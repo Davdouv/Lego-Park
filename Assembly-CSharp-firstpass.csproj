@@ -70,11 +70,11 @@
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
