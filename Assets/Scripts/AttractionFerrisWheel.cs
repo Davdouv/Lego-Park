@@ -4,9 +4,17 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class AttractionFerrisWheel : Attraction {
-    
+
+    [System.Serializable]
+    public struct Seat
+    {
+        public GameObject seat;
+        public bool occupied;
+    }
+
     public float speed;
-    public GameObject[] seats;
+    public GameObject[] seats;   
+    public Seat[] seatss;
     public GameObject structure;
     public GameObject standingPoint;
 
@@ -14,6 +22,8 @@ public class AttractionFerrisWheel : Attraction {
     private bool isVisitorGettingIn = false;
 
     private Visitor currentVisitor;
+
+    int currentSeat = 0;
 
 
     protected override void GoInside(Visitor visitor)
@@ -26,7 +36,7 @@ public class AttractionFerrisWheel : Attraction {
             isVisitorGettingIn = true;
             currentVisitor = visitor;   // So we can access the visitor anywhere
 
-            if (visitorInAttraction.Count > 1)
+            if (visitorInAttraction.Count > 1 && isAttractionAvailable)
             {
                 StartCoroutine(Rotate(2, 45));
             }
@@ -65,22 +75,30 @@ public class AttractionFerrisWheel : Attraction {
         yield return new WaitForSeconds(1);
         isAttractionAvailable = false;
 
-        yield return Rotate(duration, 405);
+        yield return Rotate(duration, 360);
         StartCoroutine(FreeAttraction());
     }
 
     protected override IEnumerator FreeAttraction()
     {
         yield return new WaitForSeconds(1);
-        int inAttraction = visitorInAttraction.Count;
-        for (int i = 0; i < inAttraction; ++i)
+        //int inAttraction = visitorInAttraction.Count;
+
+        for (int i = 0; i < capacity; ++i)
         {
-            if (visitorInAttraction.Count > 0)
+            yield return Rotate(2, 45);
+            if (seatss[i].occupied)
             {
                 Visitor visitor = visitorInAttraction.Dequeue();
                 GoOutside(visitor);
+                seatss[i].occupied = false;
+            }
+            if (!seatss[i].occupied)
+            {
+                // Before the next visitor can go out, make a new visitor get inside
+                yield return JoinAttractionWait();
                 // Wait a moment so the visitors don't go out at the same time
-                yield return Rotate(2, 45);
+                Debug.Log("ROTATE");
                 yield return new WaitForSeconds(0.25f);
             }
         }
@@ -88,11 +106,30 @@ public class AttractionFerrisWheel : Attraction {
         yield return new WaitForSeconds(1);
 
         isAttractionAvailable = true;
+
         // After the attraction ended, if there are still visitors in the queue, make them join the attraction
-        if (IsQueueFilled())
+        if (CanStartAttraction())
+        {
+            StartCoroutine(EnjoyAttraction());
+        }
+        else if (CanJoinAttraction())
         {
             JoinAttraction();
         }
+    }
+
+    IEnumerator JoinAttractionWait()
+    {
+        if (visitorQueue.Count > 0)
+        {
+            JoinAttraction();
+        }
+        while (isVisitorGettingIn)
+        {
+            yield return null;
+        }
+        Debug.Log("REACHED");
+        yield return null;
     }
 
     private void Update()
@@ -103,13 +140,15 @@ public class AttractionFerrisWheel : Attraction {
             {
                 Sit();
                 isVisitorGettingIn = false;
+                seatss[currentSeat].occupied = true;
+                IncrementSeat();
 
                 // Check if we can start Attraction
                 if (CanStartAttraction())
                 {
                     StartCoroutine(EnjoyAttraction());
                 }
-                else
+                else if (CanJoinAttraction())
                 {
                     JoinAttraction();
                 }
@@ -122,17 +161,17 @@ public class AttractionFerrisWheel : Attraction {
         structure.transform.Rotate(Vector3.left * Time.deltaTime * speed);
         for (int i = 0; i < capacity; ++i)
         {
-            seats[i].transform.Rotate(Vector3.right * Time.deltaTime * speed);
+            seatss[i].seat.transform.Rotate(Vector3.right * Time.deltaTime * speed);
         }
     }
 
     private void Sit()
     {
         currentVisitor.GetAgent().enabled = false;
-        currentVisitor.transform.SetParent(seats[visitorInAttraction.Count - 1].transform);
+        currentVisitor.transform.SetParent(seatss[currentSeat].seat.transform);
 
         currentVisitor.transform.localPosition = new Vector3(0, -0.875f, -0.3f);
-        currentVisitor.transform.rotation = seats[visitorInAttraction.Count - 1].transform.rotation;
+        currentVisitor.transform.rotation = seatss[currentSeat].seat.transform.rotation;
 
         currentVisitor.character.Sit();
         currentVisitor.character.GrabBar();
@@ -152,6 +191,15 @@ public class AttractionFerrisWheel : Attraction {
                 seats[i].transform.rotation = startRotSeat;
             }
             yield return null;
+        }
+    }
+
+    private void IncrementSeat()
+    {
+        ++currentSeat;
+        if (currentSeat == capacity)
+        {
+            currentSeat = 0;
         }
     }
 

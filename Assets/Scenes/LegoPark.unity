@@ -5163,7 +5163,7 @@ MonoBehaviour:
   spawnMostWait: 1
   spawnLeastWait: 0.2
   startWait: 2
-  numberOfVisitorsAttraction: 50
+  numberOfVisitorsAttraction: 10
   numberOfVisitorsVisiting: 20
 --- !u!4 &152758166
 Transform:
@@ -17690,8 +17690,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.030414024, y: 0.9142098, z: -0.06880939, w: 0.39819697}
-  m_LocalPosition: {x: 377.9887, y: 84.835724, z: 341.97495}
+  m_LocalRotation: {x: -0.24702755, y: 0.67115676, z: -0.25545964, w: -0.65058935}
+  m_LocalPosition: {x: 428.2381, y: 111.45413, z: 262.31335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57000,13 +57000,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749332301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -19.299982, y: 17.67, z: -3.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2109806641}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1754754417
 GameObject:
   m_ObjectHideFlags: 0
@@ -70327,6 +70327,23 @@ MonoBehaviour:
   - {fileID: 1478177045}
   - {fileID: 338708804}
   - {fileID: 1288257117}
+  seatss:
+  - seat: {fileID: 1392429553}
+    occupied: 0
+  - seat: {fileID: 116711952}
+    occupied: 0
+  - seat: {fileID: 248137418}
+    occupied: 0
+  - seat: {fileID: 1377085482}
+    occupied: 0
+  - seat: {fileID: 1315373939}
+    occupied: 0
+  - seat: {fileID: 1478177045}
+    occupied: 0
+  - seat: {fileID: 338708804}
+    occupied: 0
+  - seat: {fileID: 1288257117}
+    occupied: 0
   structure: {fileID: 482141004}
   standingPoint: {fileID: 364385557}
   hasAttractionStarted: 0
