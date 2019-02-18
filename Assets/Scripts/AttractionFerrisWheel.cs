@@ -24,7 +24,7 @@ public class AttractionFerrisWheel : Attraction {
 
     protected override void GoInside(Visitor visitor)
     {
-        if (visitorInAttraction.Count < capacity)
+        if (visitorInAttraction.Count <= capacity)
         {
             visitor.GetAgent().acceleration = 40; // Set a great deceleration speed so he can turn faster
             visitor.MoveForward(standingPoint.transform.position);
@@ -36,6 +36,7 @@ public class AttractionFerrisWheel : Attraction {
 
     protected override void GoOutside(Visitor visitor)
     {
+        currentVisitor.character.Reset();
         visitor.GetAgent().enabled = true;
         visitor.transform.SetParent(VisitorFactory.Instance.transform);
         visitor.transform.position = standingPoint.transform.position;
@@ -73,10 +74,7 @@ public class AttractionFerrisWheel : Attraction {
             if (currentVisitor.HasReachedGoal())
             {
                 Debug.Log("GOAL REACHED");
-                currentVisitor.GetAgent().enabled = false;
-                currentVisitor.transform.position = seats[visitorInAttraction.Count - 1].transform.position;
-                currentVisitor.transform.rotation = seats[visitorInAttraction.Count - 1].transform.rotation;
-                currentVisitor.transform.SetParent(seats[visitorInAttraction.Count - 1].transform);
+                Sit();
                 isVisitorGettingIn = false;
 
                 // Check if we can start Attraction
@@ -108,6 +106,17 @@ public class AttractionFerrisWheel : Attraction {
         {
             seats[i].transform.Rotate(Vector3.right * Time.deltaTime * speed);
         }
-        Debug.Log(structure.transform.localEulerAngles.x);
+    }
+
+    private void Sit()
+    {
+        currentVisitor.GetAgent().enabled = false;
+        currentVisitor.transform.SetParent(seats[visitorInAttraction.Count - 1].transform);
+
+        currentVisitor.transform.localPosition = new Vector3(0, -0.875f, -0.3f);
+        currentVisitor.transform.rotation = seats[visitorInAttraction.Count - 1].transform.rotation;
+
+        currentVisitor.character.Sit();
+        currentVisitor.character.GrabBar();
     }
 }

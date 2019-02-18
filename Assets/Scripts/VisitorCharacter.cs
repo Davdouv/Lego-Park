@@ -88,6 +88,19 @@ public class VisitorCharacter : MonoBehaviour {
         rightHand.transform.localEulerAngles = new Vector3(33.6f, 0f, 0f);
     }
 
+    public void GrabBar()
+    {
+        leftArm.transform.localPosition = new Vector3(4.8f, 55.6f, 41.9f);
+        rightArm.transform.localPosition = new Vector3(-1.93f, 55.22f, 41.63f);
+        leftHand.transform.localPosition = new Vector3(-40.4f, 8f, 54.3f);
+        rightHand.transform.localPosition = new Vector3(-18.84f, 55, 43.08f);
+
+        leftArm.transform.localEulerAngles = new Vector3(-118.6f, 0f, 0f);
+        rightArm.transform.localEulerAngles = new Vector3(-118.6f, 0f, 0f);
+        leftHand.transform.localEulerAngles = new Vector3(0f, 91.15f, 252.6f);
+        rightHand.transform.localEulerAngles = new Vector3(0f, 91.15f, 221f);
+    }
+
     public void Reset()
     {
         leftArm.transform.localEulerAngles = _leftArmRotation;
