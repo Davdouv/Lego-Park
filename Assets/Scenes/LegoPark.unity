@@ -5163,7 +5163,7 @@ MonoBehaviour:
   spawnMostWait: 1
   spawnLeastWait: 0.2
   startWait: 2
-  numberOfVisitorsAttraction: 10
+  numberOfVisitorsAttraction: 50
   numberOfVisitorsVisiting: 20
 --- !u!4 &152758166
 Transform:
@@ -27444,7 +27444,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attractions:
+  - {fileID: 1161232212}
+  - {fileID: 639887964}
+  - {fileID: 213081044}
+  - {fileID: 690352709}
   - {fileID: 2109806643}
+  - {fileID: 1962795945}
+  - {fileID: 2111387517}
+  - {fileID: 103383577}
+  - {fileID: 1310141082}
 --- !u!4 &805951833
 Transform:
   m_ObjectHideFlags: 0

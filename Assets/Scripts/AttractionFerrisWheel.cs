@@ -83,17 +83,26 @@ public class AttractionFerrisWheel : Attraction {
     {
         yield return new WaitForSeconds(1);
         //int inAttraction = visitorInAttraction.Count;
-
+        int occupiedSeats = currentSeat;
         for (int i = 0; i < capacity; ++i)
         {
             yield return Rotate(2, 45);
-            if (seatss[i].occupied)
+            // if 1 occupied seat then we start at index 0 + 1
+            int num = occupiedSeats + i;
+            // if 8 occupied seats then we start at index 0
+            if (num > 7)
+            {
+                num = num - 8;
+            }
+
+            currentSeat = num;
+            if (seatss[num].occupied)
             {
                 Visitor visitor = visitorInAttraction.Dequeue();
                 GoOutside(visitor);
-                seatss[i].occupied = false;
+                seatss[num].occupied = false;
             }
-            if (!seatss[i].occupied)
+            if (!seatss[num].occupied)
             {
                 // Before the next visitor can go out, make a new visitor get inside
                 yield return JoinAttractionWait();

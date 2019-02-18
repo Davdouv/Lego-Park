@@ -84,26 +84,29 @@ public class Attraction : MonoBehaviour
     // Called when the queue can get in the attraction or when the attraction ended
     protected void JoinAttraction()
     {
-        // Visitor is leaving queue
-        Visitor visitor = visitorQueue.Dequeue();
-        visitor.IsInQueue = false;
-        // Move the queue forward
-        MoveQueueForward(visitor);
-        // Join Attraction
-        visitorInAttraction.Enqueue(visitor);
-        // Make the visitor go inside the attraction
-        GoInside(visitor);
+        if (IsQueueFilled())
+        {
+            // Visitor is leaving queue
+            Visitor visitor = visitorQueue.Dequeue();
+            visitor.IsInQueue = false;
+            // Move the queue forward
+            MoveQueueForward(visitor);
+            // Join Attraction
+            visitorInAttraction.Enqueue(visitor);
+            // Make the visitor go inside the attraction
+            GoInside(visitor);
 
-        // Start Attraction asap
-        if (CanStartAttraction())
-        {
-            StartCoroutine(EnjoyAttraction());
-        }
-        // More people can come in the attraction
-        else if (IsQueueFilled() && CanJoinAttraction())
-        {
-            JoinAttraction();
-        }
+            // Start Attraction asap
+            if (CanStartAttraction())
+            {
+                StartCoroutine(EnjoyAttraction());
+            }
+            // More people can come in the attraction
+            else if (IsQueueFilled() && CanJoinAttraction())
+            {
+                JoinAttraction();
+            }
+        }        
     }
 
     protected virtual void GoInside(Visitor visitor)
