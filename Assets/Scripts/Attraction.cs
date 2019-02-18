@@ -139,7 +139,7 @@ public class Attraction : MonoBehaviour
         StartCoroutine(FreeAttraction());
     }
 
-    protected IEnumerator FreeAttraction()
+    protected virtual IEnumerator FreeAttraction()
     {
         int inAttraction = visitorInAttraction.Count;
         for (int i = 0; i < inAttraction; ++i)
@@ -163,7 +163,7 @@ public class Attraction : MonoBehaviour
         }
     }
 
-    private bool IsQueueFilled()
+    protected bool IsQueueFilled()
     {
         return (visitorQueue.Count > 0);
     }
@@ -190,7 +190,7 @@ public class Attraction : MonoBehaviour
     }
 
     // When a visitor joins the queue
-    void MoveQueueBackward()
+    protected virtual void MoveQueueBackward()
     {
         // Move queue start location
         Vector3 translation = new Vector3(0, 0, -queueStep);

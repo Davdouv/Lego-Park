@@ -75,7 +75,8 @@ public class Visitor : MonoBehaviour
 
     private void FaceAttraction()
     {
-        Transform target = attractionDest.GetEntry();
+        //Transform target = attractionDest.GetEntry();
+        Transform target = attractionDest.transform;
         if (this.transform.rotation != target.rotation)
         {
             Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);

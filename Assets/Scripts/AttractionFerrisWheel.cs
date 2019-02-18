@@ -14,15 +14,7 @@ public class AttractionFerrisWheel : Attraction {
     private bool isVisitorGettingIn = false;
 
     private Visitor currentVisitor;
-    private float previousAngle;
 
-    bool once = true;
-
-    private void Start()
-    {
-        previousAngle = structure.transform.localEulerAngles.x;
-        Debug.Log(previousAngle);
-    }
 
     protected override void GoInside(Visitor visitor)
     {
@@ -43,10 +35,10 @@ public class AttractionFerrisWheel : Attraction {
 
     protected override void GoOutside(Visitor visitor)
     {
-        currentVisitor.character.Reset();
-        visitor.GetAgent().enabled = true;
+        visitor.character.Reset();
         visitor.transform.SetParent(VisitorFactory.Instance.transform);
         visitor.transform.position = standingPoint.transform.position;
+        visitor.GetAgent().enabled = true;
         visitor.ExitAttraction();
     }
 
@@ -70,11 +62,37 @@ public class AttractionFerrisWheel : Attraction {
 
     protected override IEnumerator EnjoyAttraction()
     {
+        yield return new WaitForSeconds(1);
         isAttractionAvailable = false;
 
-        yield return Rotate(duration, 360);
-        Debug.Log("Rotation finished");
+        yield return Rotate(duration, 405);
         StartCoroutine(FreeAttraction());
+    }
+
+    protected override IEnumerator FreeAttraction()
+    {
+        yield return new WaitForSeconds(1);
+        int inAttraction = visitorInAttraction.Count;
+        for (int i = 0; i < inAttraction; ++i)
+        {
+            if (visitorInAttraction.Count > 0)
+            {
+                Visitor visitor = visitorInAttraction.Dequeue();
+                GoOutside(visitor);
+                // Wait a moment so the visitors don't go out at the same time
+                yield return Rotate(2, 45);
+                yield return new WaitForSeconds(0.25f);
+            }
+        }
+
+        yield return new WaitForSeconds(1);
+
+        isAttractionAvailable = true;
+        // After the attraction ended, if there are still visitors in the queue, make them join the attraction
+        if (IsQueueFilled())
+        {
+            JoinAttraction();
+        }
     }
 
     private void Update()
@@ -83,7 +101,6 @@ public class AttractionFerrisWheel : Attraction {
         {
             if (currentVisitor.HasReachedGoal())
             {
-                Debug.Log("GOAL REACHED");
                 Sit();
                 isVisitorGettingIn = false;
 
@@ -97,8 +114,7 @@ public class AttractionFerrisWheel : Attraction {
                     JoinAttraction();
                 }
             }
-        }
-        
+        }        
     }
 
     private void RotateStructure()
@@ -137,15 +153,6 @@ public class AttractionFerrisWheel : Attraction {
             }
             yield return null;
         }
-
-        /*
-        structure.transform.rotation = startRot;
-        
-        for (int i = 0; i < capacity; ++i)
-        {
-            seats[i].transform.rotation = startRotSeat;
-        }
-        */
     }
 
 }
