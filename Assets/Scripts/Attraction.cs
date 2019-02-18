@@ -68,7 +68,7 @@ public class Attraction : MonoBehaviour
         }
     }
 
-    private bool CanJoinAttraction()
+    protected virtual bool CanJoinAttraction()
     {
         // If the attraction has not started yet & there is enough capacity, join the attraction
         if (visitorInAttraction.Count < capacity && isAttractionAvailable)

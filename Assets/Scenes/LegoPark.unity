@@ -3895,7 +3895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116711953}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Seat (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3909,14 +3909,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116711952}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: -3.5479996, z: -6.151999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 399874419}
   m_Father: {fileID: 4161057268903443257}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &117496418
 GameObject:
   m_ObjectHideFlags: 0
@@ -5057,7 +5057,7 @@ GameObject:
   - component: {fileID: 151595873}
   - component: {fileID: 151595875}
   - component: {fileID: 151595874}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub031 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5228,7 +5228,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 7479
+    m_Bits: 5431
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -7599,7 +7599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 248137419}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Seat (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7613,14 +7613,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248137418}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 1.8559998, z: -6.876999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 517907771}
   m_Father: {fileID: 4161057268903443257}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &248216234
 GameObject:
   m_ObjectHideFlags: 0
@@ -10561,7 +10561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 338708805}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Seat (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10575,14 +10575,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338708804}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: -1.825, z: 6.857001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 524518804}
   m_Father: {fileID: 4161057268903443257}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &342660150
 GameObject:
   m_ObjectHideFlags: 0
@@ -11099,6 +11099,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362692824}
   m_Mesh: {fileID: 4300284, guid: 5048cbad5d050e24abcbc4a9e94ab102, type: 3}
+--- !u!1 &364385557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364385558}
+  m_Layer: 10
+  m_Name: StandingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &364385558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364385557}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 22.12, y: 17.67, z: 6.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2109806641}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &364602354
 GameObject:
   m_ObjectHideFlags: 0
@@ -12197,7 +12227,7 @@ GameObject:
   - component: {fileID: 399874419}
   - component: {fileID: 399874421}
   - component: {fileID: 399874420}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub031 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15923,7 +15953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 482141005}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TurningStructure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15937,7 +15967,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482141004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15945,7 +15975,7 @@ Transform:
   - {fileID: 929042044}
   m_Father: {fileID: 1759584197}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!1 &485221204
 GameObject:
   m_ObjectHideFlags: 0
@@ -16996,7 +17026,7 @@ GameObject:
   - component: {fileID: 517907771}
   - component: {fileID: 517907773}
   - component: {fileID: 517907772}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub031 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17076,7 +17106,7 @@ GameObject:
   - component: {fileID: 524518804}
   - component: {fileID: 524518806}
   - component: {fileID: 524518805}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub031 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19200,7 +19230,7 @@ GameObject:
   - component: {fileID: 579518758}
   - component: {fileID: 579518757}
   - component: {fileID: 579518756}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24269,7 +24299,7 @@ GameObject:
   - component: {fileID: 707412380}
   - component: {fileID: 707412382}
   - component: {fileID: 707412381}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub031 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27414,15 +27444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attractions:
-  - {fileID: 1161232212}
-  - {fileID: 639887964}
-  - {fileID: 213081044}
-  - {fileID: 690352709}
-  - {fileID: 2109806642}
-  - {fileID: 1962795945}
-  - {fileID: 2111387517}
-  - {fileID: 103383577}
-  - {fileID: 1310141082}
+  - {fileID: 2109806643}
 --- !u!4 &805951833
 Transform:
   m_ObjectHideFlags: 0
@@ -31684,7 +31706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 929042044}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32350,7 +32372,7 @@ GameObject:
   - component: {fileID: 950707306}
   - component: {fileID: 950707308}
   - component: {fileID: 950707307}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub031 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34986,7 +35008,7 @@ GameObject:
   - component: {fileID: 1032606671}
   - component: {fileID: 1032606673}
   - component: {fileID: 1032606672}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36673,7 +36695,7 @@ GameObject:
   - component: {fileID: 1103171276}
   - component: {fileID: 1103171278}
   - component: {fileID: 1103171277}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub031 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37500,7 +37522,7 @@ GameObject:
   - component: {fileID: 1124904618}
   - component: {fileID: 1124904620}
   - component: {fileID: 1124904619}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub031 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41517,7 +41539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1288257118}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Seat (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41531,14 +41553,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288257117}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: -6.12, z: 3.5400026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1103171276}
   m_Father: {fileID: 4161057268903443257}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &1288886841
 GameObject:
   m_ObjectHideFlags: 0
@@ -42397,7 +42419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1315373940}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Seat (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42411,14 +42433,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315373939}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 6.867, z: 1.8390015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 950707306}
   m_Father: {fileID: 4161057268903443257}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &1323897297
 GameObject:
   m_ObjectHideFlags: 0
@@ -44048,7 +44070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1377085483}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Seat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44062,14 +44084,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377085482}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 6.153, z: -3.5607972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1124904618}
   m_Father: {fileID: 4161057268903443257}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &1377273707
 GameObject:
   m_ObjectHideFlags: 0
@@ -44622,7 +44644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1392429554}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Seat (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44636,14 +44658,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392429553}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: -6.8440003, z: -1.8570007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 151595873}
   m_Father: {fileID: 4161057268903443257}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &1394675231
 GameObject:
   m_ObjectHideFlags: 0
@@ -47147,7 +47169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1478177046}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Seat (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47161,14 +47183,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478177045}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 3.564, z: 6.158002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 707412380}
   m_Father: {fileID: 4161057268903443257}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &1478264303
 GameObject:
   m_ObjectHideFlags: 0
@@ -56397,7 +56419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1732855919}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57399,7 +57421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1759584197}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MyFerrisWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70250,9 +70272,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2109806641}
-  - component: {fileID: 2109806642}
+  - component: {fileID: 2109806643}
   m_Layer: 10
-  m_Name: Attraction_3
+  m_Name: Attraction_FerrisWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70273,10 +70295,11 @@ Transform:
   - {fileID: 1749332302}
   - {fileID: 1083523900}
   - {fileID: 1759584197}
+  - {fileID: 364385558}
   m_Father: {fileID: 637274392}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2109806642
+--- !u!114 &2109806643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70285,15 +70308,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2109806640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d4bfec130d640b479b8514450fffe3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c9c299e8b7e15e4eba69d50eb88be6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capacity: 1
+  capacity: 8
   queueCapacity: 30
   duration: 4
   entry: {fileID: 1749332301}
   exit: {fileID: 1083523899}
   queueStep: 5
+  speed: 20
+  seats:
+  - {fileID: 1392429553}
+  - {fileID: 116711952}
+  - {fileID: 248137418}
+  - {fileID: 1377085482}
+  - {fileID: 1315373939}
+  - {fileID: 1478177045}
+  - {fileID: 338708804}
+  - {fileID: 1288257117}
+  structure: {fileID: 482141004}
+  standingPoint: {fileID: 364385557}
+  hasAttractionStarted: 0
 --- !u!1 &2110120857
 GameObject:
   m_ObjectHideFlags: 0
@@ -72309,7 +72345,7 @@ GameObject:
   - component: {fileID: 4161057268903443233}
   - component: {fileID: 4161057268906834699}
   - component: {fileID: 4161057268905736651}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: darkmetal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72327,7 +72363,7 @@ GameObject:
   - component: {fileID: 4161057268903443235}
   - component: {fileID: 4161057268906834701}
   - component: {fileID: 4161057268905736653}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72343,7 +72379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4161057268903443239}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72375,7 +72411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4161057268903443243}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72391,7 +72427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4161057268903443245}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: circle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72409,7 +72445,7 @@ GameObject:
   - component: {fileID: 4161057268903443247}
   - component: {fileID: 4161057268906834697}
   - component: {fileID: 4161057268905736649}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: circle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72427,7 +72463,7 @@ GameObject:
   - component: {fileID: 4161057268903443249}
   - component: {fileID: 4161057268906834695}
   - component: {fileID: 4161057268905736647}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72463,7 +72499,7 @@ GameObject:
   - component: {fileID: 4161057268903443253}
   - component: {fileID: 4161057268906834715}
   - component: {fileID: 4161057268905736667}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72479,7 +72515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4161057268903443257}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: seats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72497,7 +72533,7 @@ GameObject:
   - component: {fileID: 4161057268903443259}
   - component: {fileID: 4161057268906834689}
   - component: {fileID: 4161057268905736641}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72515,7 +72551,7 @@ GameObject:
   - component: {fileID: 4161057268903443261}
   - component: {fileID: 4161057268906834691}
   - component: {fileID: 4161057268905736643}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72533,7 +72569,7 @@ GameObject:
   - component: {fileID: 4161057268903443209}
   - component: {fileID: 4161057268906834719}
   - component: {fileID: 4161057268905736671}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72551,7 +72587,7 @@ GameObject:
   - component: {fileID: 4161057268903443211}
   - component: {fileID: 4161057268906834705}
   - component: {fileID: 4161057268905736657}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: sub03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

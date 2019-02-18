@@ -5,6 +5,30 @@ using UnityEngine.AI;
 
 public class VisitorFactory : MonoBehaviour {
 
+    #region Singleton
+    // Instance
+    private static VisitorFactory m_instance;
+
+    public static VisitorFactory Instance
+    {
+        get
+        {
+            // create logic to create the instance
+            if (m_instance == null)
+            {
+                GameObject go = new GameObject("VisitorFactory");
+                go.AddComponent<VisitorFactory>();
+            }
+            return m_instance;
+        }
+    }
+
+    void Awake()
+    {
+        m_instance = this;
+    }
+    #endregion
+
     public GameObject[] visitorAttraction;    // Models of visitor that can do attractions
     public GameObject[] visitorVisiting; // Models of visitor that move randomly
     public Vector3 spawnValues;

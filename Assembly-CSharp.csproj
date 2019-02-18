@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\AttractionBench.cs" />
     <Compile Include="Assets\Scripts\AttractionEditor.cs" />
     <Compile Include="Assets\Scripts\AttractionElevator.cs" />
+    <Compile Include="Assets\Scripts\AttractionFerrisWheel.cs" />
     <Compile Include="Assets\Scripts\AttractionManager.cs" />
     <Compile Include="Assets\Scripts\AttractionPizza.cs" />
     <Compile Include="Assets\Scripts\AttractionShop.cs" />
