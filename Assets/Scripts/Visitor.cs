@@ -113,9 +113,7 @@ public class Visitor : MonoBehaviour
 
     public bool HasReachedGoal()
     {
-        //if (!goal) return false;
-        // remainingDistance
-        if (Vector3.Distance(goal, this.transform.position) < distance)
+        if ((goal - this.transform.position).sqrMagnitude < distance*distance)
         {
             return true;
         }
@@ -171,8 +169,4 @@ public class Visitor : MonoBehaviour
         character.GiveFood(food);
         character.HandleFood();
     }
-
-    // Check Dist
-    // (a-b).sqrMagnitude < Eps*Eps
-    // Eps*Eps --> constante
 }
