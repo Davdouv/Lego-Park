@@ -70327,15 +70327,6 @@ MonoBehaviour:
   queueStep: 5
   speed: 20
   seats:
-  - {fileID: 1392429553}
-  - {fileID: 116711952}
-  - {fileID: 248137418}
-  - {fileID: 1377085482}
-  - {fileID: 1315373939}
-  - {fileID: 1478177045}
-  - {fileID: 338708804}
-  - {fileID: 1288257117}
-  seatss:
   - seat: {fileID: 1392429553}
     occupied: 0
   - seat: {fileID: 116711952}

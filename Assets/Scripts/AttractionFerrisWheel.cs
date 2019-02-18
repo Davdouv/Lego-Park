@@ -13,8 +13,7 @@ public class AttractionFerrisWheel : Attraction {
     }
 
     public float speed;
-    public GameObject[] seats;   
-    public Seat[] seatss;
+    public Seat[] seats;
     public GameObject structure;
     public GameObject standingPoint;
 
@@ -32,7 +31,6 @@ public class AttractionFerrisWheel : Attraction {
         {
             visitor.GetAgent().acceleration = 40; // Set a great deceleration speed so he can turn faster
             visitor.MoveForward(standingPoint.transform.position);
-            //visitor.MoveForward(seats[visitorInAttraction.Count].transform.position);
             isVisitorGettingIn = true;
             currentVisitor = visitor;   // So we can access the visitor anywhere
 
@@ -95,14 +93,14 @@ public class AttractionFerrisWheel : Attraction {
                 num = num - 8;
             }
 
-            currentSeat = num;
-            if (seatss[num].occupied)
+            currentSeat = num;  // Store the currentSeat num so if a visitor wants to join he know which seat to take
+            if (seats[num].occupied)
             {
                 Visitor visitor = visitorInAttraction.Dequeue();
                 GoOutside(visitor);
-                seatss[num].occupied = false;
+                seats[num].occupied = false;
             }
-            if (!seatss[num].occupied)
+            if (!seats[num].occupied)
             {
                 // Before the next visitor can go out, make a new visitor get inside
                 yield return JoinAttractionWait();
@@ -149,7 +147,7 @@ public class AttractionFerrisWheel : Attraction {
             {
                 Sit();
                 isVisitorGettingIn = false;
-                seatss[currentSeat].occupied = true;
+                seats[currentSeat].occupied = true;
                 IncrementSeat();
 
                 // Check if we can start Attraction
@@ -170,17 +168,17 @@ public class AttractionFerrisWheel : Attraction {
         structure.transform.Rotate(Vector3.left * Time.deltaTime * speed);
         for (int i = 0; i < capacity; ++i)
         {
-            seatss[i].seat.transform.Rotate(Vector3.right * Time.deltaTime * speed);
+            seats[i].seat.transform.Rotate(Vector3.right * Time.deltaTime * speed);
         }
     }
 
     private void Sit()
     {
         currentVisitor.GetAgent().enabled = false;
-        currentVisitor.transform.SetParent(seatss[currentSeat].seat.transform);
+        currentVisitor.transform.SetParent(seats[currentSeat].seat.transform);
 
         currentVisitor.transform.localPosition = new Vector3(0, -0.875f, -0.3f);
-        currentVisitor.transform.rotation = seatss[currentSeat].seat.transform.rotation;
+        currentVisitor.transform.rotation = seats[currentSeat].seat.transform.rotation;
 
         currentVisitor.character.Sit();
         currentVisitor.character.GrabBar();
@@ -189,7 +187,7 @@ public class AttractionFerrisWheel : Attraction {
     IEnumerator Rotate(float duration, float angle)
     {
         Quaternion startRot = structure.transform.rotation;
-        Quaternion startRotSeat = seats[0].transform.rotation;
+        Quaternion startRotSeat = seats[0].seat.transform.rotation;
         float t = 0.0f;
         while (t < duration)
         {
@@ -197,7 +195,7 @@ public class AttractionFerrisWheel : Attraction {
             structure.transform.rotation = startRot * Quaternion.AngleAxis(t / duration * angle, Vector3.left);
             for (int i = 0; i < capacity; ++i)
             {
-                seats[i].transform.rotation = startRotSeat;
+                seats[i].seat.transform.rotation = startRotSeat;
             }
             yield return null;
         }
