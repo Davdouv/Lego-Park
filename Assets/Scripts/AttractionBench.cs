@@ -15,7 +15,6 @@ public class AttractionBench : Attraction {
 
     public override bool CanBeJoined()
     {
-        Debug.Log(visitors[0] == null || visitors[1] == null);
         return visitors[0] == null || visitors[1] == null;
     }
 
