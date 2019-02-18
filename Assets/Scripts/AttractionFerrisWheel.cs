@@ -16,6 +16,8 @@ public class AttractionFerrisWheel : Attraction {
     private Visitor currentVisitor;
     private float previousAngle;
 
+    bool once = true;
+
     private void Start()
     {
         previousAngle = structure.transform.localEulerAngles.x;
@@ -31,6 +33,11 @@ public class AttractionFerrisWheel : Attraction {
             //visitor.MoveForward(seats[visitorInAttraction.Count].transform.position);
             isVisitorGettingIn = true;
             currentVisitor = visitor;   // So we can access the visitor anywhere
+
+            if (visitorInAttraction.Count > 1)
+            {
+                StartCoroutine(Rotate(2, 45));
+            }
         }
     }
 
@@ -63,8 +70,11 @@ public class AttractionFerrisWheel : Attraction {
 
     protected override IEnumerator EnjoyAttraction()
     {
-        Debug.Log("ATTRACTION");
-        return base.EnjoyAttraction();
+        isAttractionAvailable = false;
+
+        yield return Rotate(duration, 360);
+        Debug.Log("Rotation finished");
+        StartCoroutine(FreeAttraction());
     }
 
     private void Update()
@@ -80,23 +90,15 @@ public class AttractionFerrisWheel : Attraction {
                 // Check if we can start Attraction
                 if (CanStartAttraction())
                 {
-                    Debug.Log("START");
+                    StartCoroutine(EnjoyAttraction());
                 }
                 else
                 {
                     JoinAttraction();
                 }
             }
-            else if (visitorInAttraction.Count > 1)
-            {
-                RotateStructure();
-            }
         }
-
-        if (hasAttractionStarted)
-        {
-            RotateStructure();
-        }
+        
     }
 
     private void RotateStructure()
@@ -119,4 +121,31 @@ public class AttractionFerrisWheel : Attraction {
         currentVisitor.character.Sit();
         currentVisitor.character.GrabBar();
     }
+
+    IEnumerator Rotate(float duration, float angle)
+    {
+        Quaternion startRot = structure.transform.rotation;
+        Quaternion startRotSeat = seats[0].transform.rotation;
+        float t = 0.0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            structure.transform.rotation = startRot * Quaternion.AngleAxis(t / duration * angle, Vector3.left);
+            for (int i = 0; i < capacity; ++i)
+            {
+                seats[i].transform.rotation = startRotSeat;
+            }
+            yield return null;
+        }
+
+        /*
+        structure.transform.rotation = startRot;
+        
+        for (int i = 0; i < capacity; ++i)
+        {
+            seats[i].transform.rotation = startRotSeat;
+        }
+        */
+    }
+
 }
