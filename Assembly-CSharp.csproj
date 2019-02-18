@@ -77,6 +77,7 @@
     <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Models\Lego-Karting\readme.txt" />
     <None Include="Assets\Fantasy Skybox FREE\Fog and Ambient references.txt" />
+    <None Include="Assets\Models\1-150530214P1\readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity Projects/Lego-Park/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
