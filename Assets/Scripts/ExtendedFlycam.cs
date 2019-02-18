@@ -30,6 +30,8 @@ public class ExtendedFlycam : MonoBehaviour
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
 
+    public Terrain terrain;
+
     void Start()
     {
         Screen.lockCursor = true;
@@ -46,18 +48,18 @@ public class ExtendedFlycam : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            transform.position += transform.forward * (normalMoveSpeed * fastMoveFactor) * Input.GetAxis("Vertical") * Time.deltaTime;
-            transform.position += transform.right * (normalMoveSpeed * fastMoveFactor) * Input.GetAxis("Horizontal") * Time.deltaTime;
+            MoveVertical(normalMoveSpeed * fastMoveFactor);
+            MoveHorizontal(normalMoveSpeed * fastMoveFactor);
         }
         else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
         {
-            transform.position += transform.forward * (normalMoveSpeed * slowMoveFactor) * Input.GetAxis("Vertical") * Time.deltaTime;
-            transform.position += transform.right * (normalMoveSpeed * slowMoveFactor) * Input.GetAxis("Horizontal") * Time.deltaTime;
+            MoveVertical(normalMoveSpeed * slowMoveFactor);
+            MoveHorizontal(normalMoveSpeed * slowMoveFactor);
         }
         else
         {
-            transform.position += transform.forward * normalMoveSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
-            transform.position += transform.right * normalMoveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
+            MoveVertical(normalMoveSpeed);
+            MoveHorizontal(normalMoveSpeed);
         }
 
 
@@ -68,5 +70,42 @@ public class ExtendedFlycam : MonoBehaviour
         {
             Screen.lockCursor = (Screen.lockCursor == false) ? true : false;
         }
+    }
+
+    private void MoveVertical(float speed)
+    {
+        Vector3 previousPosition = transform.position;
+        transform.position += transform.forward * speed * Input.GetAxis("Vertical") * Time.deltaTime;
+        if (IsCamTooFarAway())
+        {
+            transform.position = previousPosition;
+        }
+    }
+
+    private void MoveHorizontal(float speed)
+    {
+        Vector3 previousPosition = transform.position;
+        transform.position += transform.right * speed * Input.GetAxis("Horizontal") * Time.deltaTime;
+        if (IsCamTooFarAway())
+        {
+            transform.position = previousPosition;
+        }
+    }
+
+    private bool IsCamTooFarAway()
+    {
+        if (transform.position.x < 0 || transform.position.x > terrain.terrainData.size.x)
+        {
+            return true;
+        }
+        else if (transform.position.z < 0 || transform.position.z > terrain.terrainData.size.z)
+        {
+            return true;
+        }
+        else if (transform.position.y < 1 || transform.position.y > 500)
+        {
+            return true;
+        }
+        return false;
     }
 }
