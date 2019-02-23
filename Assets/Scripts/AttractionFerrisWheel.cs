@@ -163,6 +163,7 @@ public class AttractionFerrisWheel : Attraction {
         }        
     }
 
+    /*
     private void RotateStructure()
     {
         structure.transform.Rotate(Vector3.left * Time.deltaTime * speed);
@@ -171,6 +172,7 @@ public class AttractionFerrisWheel : Attraction {
             seats[i].seat.transform.Rotate(Vector3.right * Time.deltaTime * speed);
         }
     }
+    */
 
     private void Sit()
     {

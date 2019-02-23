@@ -101,6 +101,19 @@ public class VisitorCharacter : MonoBehaviour {
         rightHand.transform.localEulerAngles = new Vector3(0f, 91.15f, -139f);
     }
 
+    public void HoldBar()
+    {
+        leftArm.transform.localPosition = new Vector3(0, 15.6f, 37.3f);
+        rightArm.transform.localPosition = new Vector3(0, 15.6f, 37.3f);
+        leftHand.transform.localPosition = new Vector3(-34.5f, -12.4f, -9.1f);
+        rightHand.transform.localPosition = new Vector3(-16.5f, 9.63f, 31.8f);
+
+        leftArm.transform.localEulerAngles = new Vector3(-56.2f, 0f, 0f);
+        rightArm.transform.localEulerAngles = new Vector3(-56.2f, 0f, 0f);
+        leftHand.transform.localEulerAngles = new Vector3(0f, 61f, -28.94f);
+        rightHand.transform.localEulerAngles = new Vector3(0f, 92.9f, -63.9f);
+    }
+
     public void Reset()
     {
         leftArm.transform.localEulerAngles = _leftArmRotation;

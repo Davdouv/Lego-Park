@@ -16,7 +16,7 @@ public class Visitor : MonoBehaviour
     public bool IsInQueue { get; set; }
     public bool IsExitingAttraction { get; set; }
 
-    protected float distance = 1.0f;
+    protected const float distance = 1.0f;
     protected List<GameObject> myDecorations = new List<GameObject>();
     protected GameObject food;
 
@@ -112,9 +112,9 @@ public class Visitor : MonoBehaviour
         }
     }
 
-    public bool HasReachedGoal()
+    public bool HasReachedGoal(float dist = distance)
     {
-        if ((goal - this.transform.position).sqrMagnitude < distance*distance)
+        if ((goal - this.transform.position).sqrMagnitude < dist * dist)
         {
             return true;
         }
@@ -135,6 +135,12 @@ public class Visitor : MonoBehaviour
     {
         IsExitingAttraction = true;
         MoveForward(attractionDest.GetExit().position);
+    }
+
+    public void ExitAttractionFast()
+    {
+        HasReachedAttraction = false;
+        GetDestination();
     }
 
     // Take the position of the previous visitor

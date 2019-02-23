@@ -10,14 +10,14 @@ public class VisitorVisiting : Visitor {
     private void Start()
     {
         //agent.radius = 6; // Need to change depending on the model
-        distance = 10.0f;
+        //distance = 10.0f;
         range = 100;
         GetRandomGoal();
     }
 
     private void Update()
     {
-        if (HasReachedGoal())
+        if (HasReachedGoal(10.0f))
         {
             GetRandomGoal();
         }

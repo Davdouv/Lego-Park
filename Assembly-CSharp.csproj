@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Attraction.cs" />
     <Compile Include="Assets\Scripts\AttractionBench.cs" />
+    <Compile Include="Assets\Scripts\AttractionCarousel.cs" />
     <Compile Include="Assets\Scripts\AttractionEditor.cs" />
     <Compile Include="Assets\Scripts\AttractionElevator.cs" />
     <Compile Include="Assets\Scripts\AttractionFerrisWheel.cs" />
