@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// This visitor is just going through random places on the navmesh
 public class VisitorVisiting : Visitor {
 
     private int range;
 
     private void Start()
     {
-        //agent.radius = 6; // Need to change depending on the model
-        //distance = 10.0f;
         range = 100;
         GetRandomGoal();
     }
@@ -31,6 +30,7 @@ public class VisitorVisiting : Visitor {
     }
 
     // Not used anymore --> Moved into RandomDestinations to store a lot of destinations instead of calculating for every visitor visiting
+    /*
     private Vector3 RandomNavmeshLocation(float radius)
     {
         Vector3 randomDirection = Random.insideUnitSphere * radius;
@@ -45,4 +45,5 @@ public class VisitorVisiting : Visitor {
         }
         return finalPosition;
     }
+    */
 }

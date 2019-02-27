@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Create all the visitors
 public class VisitorFactory : MonoBehaviour {
 
     #region Singleton

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// A List of method to make the character take various positions
+// To add a position, try to do it in the inspector then copy / paste the values of the objects
 public class VisitorCharacter : MonoBehaviour {
 
     public GameObject leftArm;

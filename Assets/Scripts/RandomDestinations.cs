@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Store some random destination points calculated at the start
 public class RandomDestinations : MonoBehaviour
 {
     #region Singleton
@@ -29,9 +30,11 @@ public class RandomDestinations : MonoBehaviour
     }
     #endregion
 
+    // Number of possible random destinations
     const int destinations = 500;
     private Vector3[] randomDestination = new Vector3[destinations];
 
+    // So we know the size of the radius
     public Terrain terrain;
 
     // Start is called before the first frame update
@@ -44,11 +47,13 @@ public class RandomDestinations : MonoBehaviour
         }
     }
 
+    // To position the object at the middle of the terrain because we use a radius from this object for random position
     private void PositionAtMiddleOfTerrain()
     {
         transform.position = new Vector3(terrain.terrainData.size.x / 2, 0, terrain.terrainData.size.z / 2);
     }
 
+    // Find a random position on navMesh
     private Vector3 RandomNavmeshLocation(float radius)
     {
         Vector3 randomDirection = Random.insideUnitSphere * radius;

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Singleton to store all the attractions
 public class AttractionManager : MonoBehaviour
 {
     #region Singleton

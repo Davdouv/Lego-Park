@@ -24,6 +24,7 @@ public class AttractionPizza : Attraction
         visitor.ExitAttraction();
     }
 
+    // Update is juste used to rotate Waistress
     private void Update()
     {
         // ROTATE WAISTRESS

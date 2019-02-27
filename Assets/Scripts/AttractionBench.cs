@@ -61,7 +61,6 @@ public class AttractionBench : Attraction {
     private void FreeVisitor(int num)
     {
         visitors[num].character.Reset();
-        //visitors[num].transform.position = exit.transform.position;
         visitors[num].transform.rotation = exit.transform.rotation;
         visitors[num].GetAgent().enabled = true;
         visitors[num].ExitAttraction();

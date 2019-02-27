@@ -16,21 +16,26 @@ public class Visitor : MonoBehaviour
     public bool IsInQueue { get; set; }
     public bool IsExitingAttraction { get; set; }
 
+    // Distance needed to reach the goal
     protected const float distance = 1.0f;
+
+    // GameObjects the Visitor can take with him
     protected List<GameObject> myDecorations = new List<GameObject>();
     protected GameObject food;
 
+    // To modify the character (hands position for example)
     public VisitorCharacter character;
 
+    // Init method called when the visitor is instanciated by the Factory
     public void CreateAgent()
     {
         Vector3 position = transform.position;
+
         // Check if the Visitor can be placed on the navmesh before adding a navmeshagent
         NavMeshHit closestHit;
         if (NavMesh.SamplePosition(position, out closestHit, 500, 1))
         {
             transform.position = closestHit.position;
-            //gameObject.AddComponent<NavMeshAgent>();
             agent = gameObject.GetComponent<NavMeshAgent>();
         }
     }
@@ -57,6 +62,7 @@ public class Visitor : MonoBehaviour
                 JoinQueue();
             }
         }
+        // Go Outside Attraction
         else if (IsExitingAttraction)
         {
             if (HasReachedGoal())
@@ -66,6 +72,7 @@ public class Visitor : MonoBehaviour
                 GetDestination();
             }
         }
+        // In Queue
         else if (IsInQueue)
         {
             FaceAttraction();
@@ -73,9 +80,9 @@ public class Visitor : MonoBehaviour
         TurnBetter();
     }
 
+    // Turn the object smoothly so it faces the attracion
     private void FaceAttraction()
     {
-        //Transform target = attractionDest.GetEntry();
         Transform target = attractionDest.transform;
         if (this.transform.rotation != target.rotation)
         {
@@ -84,6 +91,7 @@ public class Visitor : MonoBehaviour
         }
     }
 
+    // Modify agent.acceleration so agent can break better if the turn angle is too high and can stop faster
     private void TurnBetter()
     {
         if (agent.hasPath && !HasReachedGoal())
@@ -99,6 +107,7 @@ public class Visitor : MonoBehaviour
         }
     }
 
+    // Called every frame because the queue start can change position at anytime
     private void MoveToAttraction()
     {
         if (attractionDest)
@@ -124,6 +133,7 @@ public class Visitor : MonoBehaviour
         }
     }
 
+    // At this point, the attraction will manage the visitor and tell him what to do
     private void JoinQueue()
     {
         HasReachedAttraction = true;
@@ -131,12 +141,14 @@ public class Visitor : MonoBehaviour
         attractionDest.JoinQueue(this);
     }
 
+    // Move Towards the Exit point of the attraction
     public void ExitAttraction()
     {
         IsExitingAttraction = true;
         MoveForward(attractionDest.GetExit().position);
     }
 
+    // Exit attraction without going through the exit point
     public void ExitAttractionFast()
     {
         HasReachedAttraction = false;
