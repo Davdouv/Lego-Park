@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Attraction : MonoBehaviour
@@ -20,6 +21,7 @@ public class Attraction : MonoBehaviour
     // Position of the start of the queue
     protected GameObject queueStart;
     // Distance between each visitor in the queue
+    [Tooltip("TEST")]
     public float queueStep = 5f;
     // Check if people are in attraction or not
     protected bool isAttractionAvailable;
@@ -203,5 +205,15 @@ public class Attraction : MonoBehaviour
     public virtual bool CanBeJoined()
     {
         return !(visitorQueue.Count == queueCapacity);
+    }
+
+    public void OnInspector()
+    {
+        #if UNITY_EDITOR
+        if (queueStep < 5)
+        {
+            EditorGUILayout.HelpBox("Queue step must be >= 5 !!!", MessageType.Error);
+        }
+        #endif
     }
 }

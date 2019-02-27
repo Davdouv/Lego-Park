@@ -25,10 +25,12 @@ public class VisitorVisiting : Visitor {
 
     private void GetRandomGoal()
     {
-        goal = RandomNavmeshLocation(range);
+        //goal = RandomNavmeshLocation(range);
+        goal = RandomDestinations.Instance.GetRandomDestination();
         agent.SetDestination(goal);
     }
 
+    // Not used anymore --> Moved into RandomDestinations to store a lot of destinations instead of calculating for every visitor visiting
     private Vector3 RandomNavmeshLocation(float radius)
     {
         Vector3 randomDirection = Random.insideUnitSphere * radius;

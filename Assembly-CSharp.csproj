@@ -64,7 +64,6 @@
     <Compile Include="Assets\Scripts\Attraction.cs" />
     <Compile Include="Assets\Scripts\AttractionBench.cs" />
     <Compile Include="Assets\Scripts\AttractionCarousel.cs" />
-    <Compile Include="Assets\Scripts\AttractionEditor.cs" />
     <Compile Include="Assets\Scripts\AttractionElevator.cs" />
     <Compile Include="Assets\Scripts\AttractionFerrisWheel.cs" />
     <Compile Include="Assets\Scripts\AttractionManager.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="Assets\Scripts\AttractionShop.cs" />
     <Compile Include="Assets\Scripts\ExtendedFlycam.cs" />
     <Compile Include="Assets\Scripts\ForTest\Go.cs" />
+    <Compile Include="Assets\Scripts\RandomDestinations.cs" />
     <Compile Include="Assets\Scripts\Visitor.cs" />
     <Compile Include="Assets\Scripts\VisitorCharacter.cs" />
     <Compile Include="Assets\Scripts\VisitorFactory.cs" />
